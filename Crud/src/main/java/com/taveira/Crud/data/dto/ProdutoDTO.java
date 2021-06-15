@@ -2,8 +2,11 @@ package com.taveira.crud.data.dto;
 
 import java.io.Serializable;
 
+import org.modelmapper.ModelMapper;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.taveira.crud.entity.Produto;
 
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -34,4 +37,8 @@ public class ProdutoDTO implements Serializable{
 	@JsonProperty("preco")
 	private Double preco;
 
+	public static ProdutoDTO create(Produto produto) {
+		return new ModelMapper().map(produto, ProdutoDTO.class);
+		
+	}
 }
